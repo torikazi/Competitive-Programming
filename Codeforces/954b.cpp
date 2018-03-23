@@ -4,9 +4,9 @@ using namespace std;
 int n;
 string s,c="";
 
-bool match(int q){
+bool match(){
     int i,j;
-    for(i=q,j=q+c.size();i<q+c.size();i++,j++)
+    for(i=0,j=c.size();i<c.size();i++,j++)
     {
         if(s[i]!=s[j]){
             return false;
@@ -21,19 +21,17 @@ int main()
     cin>>n;
     cin>>s;
 
-    for(i=0;i<n/2;i++)
+
+    c="";
+    for(j=0;j<=n/2;j++)
     {
-        c="";
-        for(j=i;j<n/2;j++)
+        c+=s[j];
+        //cout<<c<<endl;
+        if(match())
         {
-            c+=s[j];
-          //  cout<<c<<endl;
-            if(match(i))
-            {
-                k=c.size();
-           //     cout<<"k"<<k<<endl;
-                m=max(m,k);
-            }
+            k=c.size();
+       //     cout<<"k"<<k<<endl;
+            m=max(m,k);
         }
     }
     if(m) cout<<n-m+1<<endl;
